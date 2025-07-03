@@ -1,0 +1,18 @@
+import styles from "./Layout.module.css"
+
+function Layout({children}) {
+  return (
+    <>
+    <header className={styles.header}>
+      <div>
+        <img src="./calendar.png" alt="calendar" />
+        <h4>Task-Week14</h4>
+      </div>
+    </header>
+    {children}
+    <footer className={styles.footer}>Developed By Milad Akbari | Botostart BOOTCAMP</footer>
+    </>
+  )
+}
+
+export default Layout
