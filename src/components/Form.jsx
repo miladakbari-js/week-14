@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import inputs from "../constants/inputs.js";
 
-
-function Form({contacts , setContacts}) {
+function Form({ contacts, setContacts, editableContact, setEditableContact }) {
   
+  useEffect(() => {
+    if (editableContact) {
+      setContact(editableContact);
+    }
+  }, [editableContact]);
+
   const [contact, setContact] = useState({
     name: "",
     lastName: "",
@@ -29,9 +34,19 @@ function Form({contacts , setContacts}) {
       alert("please enter Valid Data!!!");
       return;
     }
-    const id = Math.floor(Math.random() * 1000);
-    const newContact = { ...contact, id: id };
-    setContacts((contacts) => [...contacts, newContact]);
+
+    if (editableContact) {
+      const updatedContact = contacts.map((item) =>
+        item.id === editableContact.id ? contact : item
+      );
+      setContacts(updatedContact);
+      setEditableContact(null);
+    } else {
+      const id = Math.floor(Math.random() * 1000);
+      const newContact = { ...contact, id: id };
+      setContacts((contacts) => [...contacts, newContact]);
+    }
+
     setContact({
       id: "",
       name: "",
@@ -40,15 +55,12 @@ function Form({contacts , setContacts}) {
       email: "",
       phone: "",
     });
-   
   };
-
-
-
 
   return (
     <div>
       <div>
+        
         {inputs.map((input, index) => (
           <input
             name={input.name}
@@ -59,9 +71,10 @@ function Form({contacts , setContacts}) {
             onChange={changeHandler}
           />
         ))}
-      <button onClick={addHandler}>ثبت</button>
+        <button onClick={addHandler}>
+          {editableContact ? "ویرایش" : "ثبت"}
+        </button>
       </div>
-      
     </div>
   );
 }

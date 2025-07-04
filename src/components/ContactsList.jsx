@@ -1,9 +1,10 @@
 import ContactCard from "./ContactCard";
 
-function ContactsList({ contacts, setContacts , deleteHandler , editHandler }) {
+function ContactsList({ contacts, setContacts , deleteHandler , editHandler , deleteAllHandler  }) {
   console.log(contacts);
   return (
     <>
+    <button onClick={deleteAllHandler}>حذف کل مخاطبین</button>
     <table>
        <thead>
           <tr>
