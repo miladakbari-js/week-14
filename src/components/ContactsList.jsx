@@ -1,6 +1,6 @@
 import ContactCard from "./ContactCard";
 
-function ContactsList({ contacts, setContacts }) {
+function ContactsList({ contacts, setContacts , deleteHandler , editHandler }) {
   console.log(contacts);
   return (
     <>
@@ -12,15 +12,16 @@ function ContactsList({ contacts, setContacts }) {
             <th>ایمیل</th>
             <th>شغل</th>
             <th>شماره تماس</th>
+            <th>وضعیت</th>
           </tr>
         </thead>
-    </table>
 
-    <div>
+    <tbody>
       {contacts.map((contact) => (
-        <ContactCard key={contact.id} data={contact} />
+        <ContactCard key={contact.id} data={contact} deleteHandler={deleteHandler} editHandler={editHandler}/>
       ))}
-    </div>
+    </tbody>
+      </table>
       </>
   );
 }

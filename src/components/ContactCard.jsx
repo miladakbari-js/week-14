@@ -1,20 +1,17 @@
-function ContactCard({ data }) {
-  console.log(data);
+function ContactCard({ data , deleteHandler , editHandler }) {
+  
   return (
-    <div>
-      <table>
-       
-        <tbody>
-          <tr>
-            <td>{data.name}</td>
-            <td>{data.lastName}</td>
-            <td>{data.email}</td>
-            <td>{data.job}</td>
-            <td>{data.phone}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <tr>
+      <td>{data.name}</td>
+      <td>{data.lastName}</td>
+      <td>{data.email}</td>
+      <td>{data.job}</td>
+      <td>{data.phone}</td>
+      <td>
+        <button onClick={()=>editHandler(data.id)}>ویرایش</button>
+        <button onClick={()=>deleteHandler(data.id)}>حذف</button>
+      </td>
+    </tr>
   );
 }
 
