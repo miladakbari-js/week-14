@@ -6,7 +6,6 @@ function ContactsList({
   editHandler,
   deleteAllHandler,
 }) {
-  console.log(contacts);
   return (
     <>
       {!!contacts.length && (
@@ -36,7 +35,9 @@ function ContactsList({
             ))}
           </tbody>
         </table>
-      ) : <p>هیچ مخاطبی وجود ندارد !</p>}
+      ) : (
+        <p>هیچ مخاطبی وجود ندارد !</p>
+      )}
     </>
   );
 }
