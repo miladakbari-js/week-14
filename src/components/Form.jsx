@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import inputs from "../constants/inputs.js";
 
-function Form({ contacts, setContacts, editableContact, setEditableContact }) {
+function Form({ contacts, setContacts, editableContact, setEditableContact , showForm , setShowForm }) {
   
   useEffect(() => {
     if (editableContact) {
@@ -36,6 +36,7 @@ function Form({ contacts, setContacts, editableContact, setEditableContact }) {
     }
 
     if (editableContact) {
+     
       const updatedContact = contacts.map((item) =>
         item.id === editableContact.id ? contact : item
       );
@@ -45,6 +46,7 @@ function Form({ contacts, setContacts, editableContact, setEditableContact }) {
       const id = Math.floor(Math.random() * 1000);
       const newContact = { ...contact, id: id };
       setContacts((contacts) => [...contacts, newContact]);
+      setShowForm(!showForm)
     }
 
     setContact({

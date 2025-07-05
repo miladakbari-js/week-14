@@ -7,6 +7,7 @@ import ContactsList from "./components/ContactsList";
 function App() {
   const [contacts, setContacts] = useState([]);
   const [editableContact, setEditableContact] = useState(null);
+  const [showForm, setShowForm] = useState(false);
 
   const deleteHandler = (id) => {
     const newContacts = contacts.filter((contact) => contact.id !== id);
@@ -14,25 +15,32 @@ function App() {
   };
 
   const editHandler = (id) => {
+    setShowForm(true);
     const editContact = contacts.find((contact) => contact.id === id);
     console.log(editContact);
-   setEditableContact(editContact);
+    setEditableContact(editContact);
   };
 
-  const deleteAllHandler = ()=>{
-    setContacts([])
-  }
+  const deleteAllHandler = () => {
+    setContacts([]);
+  };
   return (
     <>
       <Layout>
         <main>
-          <Form
-            contacts={contacts}
-            setContacts={setContacts}
-            editableContact={editableContact}
-            setEditableContact={setEditableContact}
-            
-          />
+          <button onClick={() => setShowForm(!showForm)}>
+            {showForm ? " بستن فرم" : "فرم جدید"}
+          </button>
+          {showForm && (
+            <Form
+              contacts={contacts}
+              setContacts={setContacts}
+              editableContact={editableContact}
+              setEditableContact={setEditableContact}
+              showForm={showForm}
+              setShowForm={setShowForm}
+            />
+          )}
           <ContactsList
             contacts={contacts}
             setContacts={setContacts}
