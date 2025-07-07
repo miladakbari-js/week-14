@@ -15,7 +15,7 @@ padding: 25px;
 color: #32557a;
 }
 .start p{
-  width: 300px;
+  width: 400px;
   text-align: justify;
   font-size: 1.2rem;
 }
@@ -24,13 +24,18 @@ color: #32557a;
   height: 40px;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
   transition: all 0.2s ease-in;
 }
 .new{
-background-color: #a6e2a6;
+background-color: #d6fdd6;
+color: #2f662f;
 }
 .close{
-  background-color: #e2a6a6;
+  background-color: #eec0c0;
+  color: #f34444;
 }
 .start button:hover{
   transform: scale(1.1);

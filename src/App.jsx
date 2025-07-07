@@ -15,7 +15,6 @@ function App() {
   const [deleteAllModal, setDeleteAllModal] = useState(false);
 
   const searchHandler = (search) => {
-
     if (!search) {
       alert("Please enter your search value");
       setContacts(allContacts);
@@ -114,7 +113,7 @@ function App() {
               onCancel={deleteAllModal ? cancelDeleteAll : cancelDelete}
               message={
                 deleteAllModal
-                  ? "Want Delete All contacts?"
+                  ? "Delete All contacts?"
                   : "Delete This contact?"
               }
             />

@@ -1,11 +1,20 @@
+import styles from "./Modal.module.css"
+
 function Modal({onConfirm , onCancel , message}) {
   return (
-    <div>
-      <div>
+    
+    <div className={styles.wall} onClick={onCancel}>
+
+    <div className={styles.container} onClick={(e) => e.stopPropagation()}>
+      <div >
         <p>{message}</p>
+        <div className={styles.buttons}>
         <button onClick={onConfirm}>Yes</button>
         <button onClick={onCancel}>Cancel</button>
+        </div>
       </div>
+    </div>
+    
     </div>
   );
 }

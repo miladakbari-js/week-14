@@ -41,3 +41,6 @@ th{
   align-items: center;
   justify-content: space-between;
 }
+.container p{
+  text-align: center;
+}
