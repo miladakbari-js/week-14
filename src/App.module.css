@@ -1,0 +1,38 @@
+.main {
+  width: 1200px;
+  height: 700px;
+  background-color: #fff;
+  margin: auto;
+}
+.start{
+ display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 25px;
+}
+
+.start h1{
+color: #32557a;
+}
+.start p{
+  width: 300px;
+  text-align: justify;
+  font-size: 1.2rem;
+}
+.start button{
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.2s ease-in;
+}
+.new{
+background-color: #a6e2a6;
+}
+.close{
+  background-color: #e2a6a6;
+}
+.start button:hover{
+  transform: scale(1.1);
+}
+

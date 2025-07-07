@@ -3,8 +3,8 @@ function Modal({onConfirm , onCancel , message}) {
     <div>
       <div>
         <p>{message}</p>
-        <button onClick={onConfirm}>تایید</button>
-        <button onClick={onCancel}>انصراف</button>
+        <button onClick={onConfirm}>Yes</button>
+        <button onClick={onCancel}>Cancel</button>
       </div>
     </div>
   );

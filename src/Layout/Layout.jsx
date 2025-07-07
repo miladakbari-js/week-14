@@ -1,11 +1,12 @@
 import styles from "./Layout.module.css"
 
+
 function Layout({children}) {
   return (
     <>
     <header className={styles.header}>
       <div>
-        <img src="./calendar.png" alt="calendar" />
+        <img src="./calendar.svg" alt="calendar" />
         <h4>Task-Week14</h4>
       </div>
     </header>

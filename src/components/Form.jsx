@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import inputs from "../constants/inputs.js";
+import styles from "./Form.module.css";
 
 function Form({
   contacts,
@@ -8,6 +9,7 @@ function Form({
   setEditableContact,
   showForm,
   setShowForm,
+  setAllContacts
 }) {
   useEffect(() => {
     if (editableContact) {
@@ -46,12 +48,14 @@ function Form({
         item.id === editableContact.id ? contact : item
       );
       setContacts(updatedContact);
+      setAllContacts(updatedContact)
       setEditableContact(null);
       setShowForm(!showForm);
     } else {
       const id = Math.floor(Math.random() * 1000);
       const newContact = { ...contact, id: id };
       setContacts((contacts) => [...contacts, newContact]);
+      setAllContacts((contacts) => [...contacts, newContact])
       setShowForm(!showForm);
     }
 
@@ -66,7 +70,7 @@ function Form({
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <div>
         {inputs.map((input, index) => (
           <input
@@ -78,8 +82,11 @@ function Form({
             onChange={changeHandler}
           />
         ))}
-        <button onClick={addHandler}>
-          {editableContact ? "ویرایش" : "ثبت"}
+        <button
+          onClick={addHandler}
+          className={editableContact ? styles.edit : styles.create}
+        >
+          {editableContact ? "Edit" : "Create"}
         </button>
       </div>
     </div>

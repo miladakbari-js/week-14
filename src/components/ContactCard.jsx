@@ -1,3 +1,5 @@
+import styles from "./ContactCard.module.css"
+
 function ContactCard({ data , deleteHandler , editHandler }) {
   
   return (
@@ -7,9 +9,9 @@ function ContactCard({ data , deleteHandler , editHandler }) {
       <td>{data.email}</td>
       <td>{data.job}</td>
       <td>{data.phone}</td>
-      <td>
-        <button onClick={()=>editHandler(data.id)}>ویرایش</button>
-        <button onClick={()=>deleteHandler(data.id)}>حذف</button>
+      <td className={styles.status}>
+        <button onClick={()=>editHandler(data.id)} className={styles.edit}>Edit</button>
+        <button onClick={()=>deleteHandler(data.id)} className={styles.delete}>Delete</button>
       </td>
     </tr>
   );

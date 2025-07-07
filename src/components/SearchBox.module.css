@@ -1,0 +1,12 @@
+.container input{
+    width: 200px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.85rem;
+    box-shadow:inset 2px 2px  8px rgb(196, 196, 196);
+}
+.container input:focus{
+    outline: none;
+}
