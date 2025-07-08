@@ -5,6 +5,7 @@
 .container div {
   display: flex;
   justify-content: space-around;
+
 }
 .container input {
   width: 200px;
@@ -36,4 +37,17 @@
 }
 .edit {
   background-color: #f8e262;
+}
+.invalid{
+  background-color: #ffe6e6;
+}
+.error{
+  color: #f84646;
+  font-size: 0.6rem;
+
+}
+.inputs{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }

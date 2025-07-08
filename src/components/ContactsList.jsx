@@ -1,5 +1,5 @@
 import ContactCard from "./ContactCard";
-import styles from "./ContactsList.module.css"
+import styles from "./ContactsList.module.css";
 import SearchBox from "./SearchBox";
 
 function ContactsList({
@@ -7,14 +7,22 @@ function ContactsList({
   deleteHandler,
   editHandler,
   deleteAllHandler,
-  searchHandler
+  searchHandler,
+  clearSearch,
+  setClearSearch,
 }) {
   return (
     <div className={styles.container}>
       {!!contacts.length && (
         <div className={styles.control}>
-        <button onClick={deleteAllHandler} className={styles.deletebutton}>Delete All</button>
-        <SearchBox  searchHandler={ searchHandler}/>
+          <button onClick={deleteAllHandler} className={styles.deletebutton}>
+            Delete All
+          </button>
+          <SearchBox
+            searchHandler={searchHandler}
+            clearSearch={clearSearch}
+            setClearSearch={setClearSearch}
+          />
         </div>
       )}
       {!!contacts.length ? (
@@ -42,7 +50,7 @@ function ContactsList({
           </tbody>
         </table>
       ) : (
-      <p>No Contact Yet !</p>
+        <p>No Contact Yet !</p>
       )}
     </div>
   );

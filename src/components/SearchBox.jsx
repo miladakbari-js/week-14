@@ -1,14 +1,20 @@
-import { useState } from "react";
-import styles from "./SearchBox.module.css"
+import { useEffect, useState } from "react";
+import styles from "./SearchBox.module.css";
 
-function SearchBox({ searchHandler }) {
+function SearchBox({ searchHandler, clearSearch, setClearSearch }) {
   const [search, setSearch] = useState("");
 
   const changeHandler = (event) => {
     const value = event.target.value;
     setSearch(value);
-    searchHandler(value);
   };
+
+  useEffect(()=>{
+    if(clearSearch){
+      setSearch("")
+      setClearSearch(false)
+    }
+  },[clearSearch])
   return (
     <div className={styles.container}>
       <input
@@ -17,7 +23,7 @@ function SearchBox({ searchHandler }) {
         value={search}
         onChange={changeHandler}
       />
-      
+      <button className={styles.searchbutton} onClick={() => searchHandler(search)}>search</button>
     </div>
   );
 }

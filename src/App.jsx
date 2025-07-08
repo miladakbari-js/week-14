@@ -9,10 +9,11 @@ function App() {
   const [contacts, setContacts] = useState([]);
   const [allContacts, setAllContacts] = useState([]);
   const [editableContact, setEditableContact] = useState(null);
+  const [targetId, setTargetId] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [targetId, setTargetId] = useState(null);
   const [deleteAllModal, setDeleteAllModal] = useState(false);
+  const [clearSearch , setClearSearch] = useState(false)
 
   const searchHandler = (search) => {
     if (!search) {
@@ -29,6 +30,7 @@ function App() {
       return;
     }
     setContacts(searchContacts);
+    setClearSearch(true)
   };
 
   const deleteHandler = (id) => {
@@ -106,6 +108,8 @@ function App() {
             editHandler={editHandler}
             deleteAllHandler={deleteAllHandler}
             searchHandler={searchHandler}
+            clearSearch={clearSearch}
+            setClearSearch={setClearSearch}
           />
           {(showModal || deleteAllModal) && (
             <Modal

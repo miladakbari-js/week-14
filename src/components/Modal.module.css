@@ -35,7 +35,7 @@
   margin-top: 25px;
   width: 250px;
 }
-button {
+.buttons button {
   width: 80px;
   height: 23px;
   border-radius: 5px;
@@ -47,6 +47,6 @@ button {
   color: #fff;
   transition: all 0.2s ease-in-out;
 }
-button:hover {
+/* button:hover {
   transform: scale(1.2);
-}
+} */

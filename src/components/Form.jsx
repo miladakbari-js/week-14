@@ -9,7 +9,7 @@ function Form({
   setEditableContact,
   showForm,
   setShowForm,
-  setAllContacts
+  setAllContacts,
 }) {
   useEffect(() => {
     if (editableContact) {
@@ -17,6 +17,7 @@ function Form({
     }
   }, [editableContact]);
 
+  const [errors, setErrors] = useState({});
   const [contact, setContact] = useState({
     name: "",
     lastName: "",
@@ -43,19 +44,32 @@ function Form({
       return;
     }
 
+    const newErrors = {};
+    for (let input of inputs) {
+      const value = contact[input.name];
+      if (input.regex && !input.regex.test(value)) {
+        newErrors[input.name] = input.errorMessage;
+      }
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    setErrors({});
+
     if (editableContact) {
       const updatedContact = contacts.map((item) =>
         item.id === editableContact.id ? contact : item
       );
       setContacts(updatedContact);
-      setAllContacts(updatedContact)
+      setAllContacts(updatedContact);
       setEditableContact(null);
       setShowForm(!showForm);
     } else {
       const id = Math.floor(Math.random() * 1000);
       const newContact = { ...contact, id: id };
       setContacts((contacts) => [...contacts, newContact]);
-      setAllContacts((contacts) => [...contacts, newContact])
+      setAllContacts((contacts) => [...contacts, newContact]);
       setShowForm(!showForm);
     }
 
@@ -73,14 +87,19 @@ function Form({
     <div className={styles.container}>
       <div>
         {inputs.map((input, index) => (
-          <input
-            name={input.name}
-            key={index}
-            type={input.type}
-            placeholder={input.placeholder}
-            value={contact[input.name]}
-            onChange={changeHandler}
-          />
+          <div key={index} className={styles.inputs}>
+            <input
+              name={input.name}
+              type={input.type}
+              placeholder={input.placeholder}
+              value={contact[input.name]}
+              onChange={changeHandler}
+              className={errors[input.name] ? styles.invalid : ""}
+            />
+            {errors[input.name] && (
+              <p className={styles.error}>{errors[input.name]}</p>
+            )}
+          </div>
         ))}
         <button
           onClick={addHandler}
