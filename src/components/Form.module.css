@@ -44,10 +44,14 @@
 .error{
   color: #f84646;
   font-size: 0.6rem;
-
+  text-align: left;
 }
 .inputs{
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+.errorBox{
+  height: 10px;
+  width: fit-content;
 }

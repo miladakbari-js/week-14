@@ -96,9 +96,12 @@ function Form({
               onChange={changeHandler}
               className={errors[input.name] ? styles.invalid : ""}
             />
+            <div className={styles.errorBox}>
+
             {errors[input.name] && (
               <p className={styles.error}>{errors[input.name]}</p>
             )}
+            </div>
           </div>
         ))}
         <button

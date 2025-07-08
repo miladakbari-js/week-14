@@ -4,6 +4,7 @@ import Form from "./components/Form";
 import Layout from "./Layout/Layout";
 import ContactsList from "./components/ContactsList";
 import Modal from "./components/Modal";
+import { createSearchHandler } from "./handlers/contactHandlers";
 
 function App() {
   const [contacts, setContacts] = useState([]);
@@ -15,24 +16,7 @@ function App() {
   const [deleteAllModal, setDeleteAllModal] = useState(false);
   const [clearSearch , setClearSearch] = useState(false)
 
-  const searchHandler = (search) => {
-    if (!search) {
-      alert("Please enter your search value");
-      setContacts(allContacts);
-      return;
-    }
-    const searchContacts = allContacts.filter((contact) =>
-      contact.name.toLowerCase().includes(search.toLowerCase().trim())
-    );
-
-    if(searchContacts.length === 0 ){
-      alert("No result found!")
-      return;
-    }
-    setContacts(searchContacts);
-    setClearSearch(true)
-  };
-
+  const searchHandler = createSearchHandler({allContacts , setContacts , setClearSearch})
   const deleteHandler = (id) => {
     setShowModal(true);
     setTargetId(id);
@@ -53,7 +37,6 @@ function App() {
   const editHandler = (id) => {
     setShowForm(true);
     const editContact = contacts.find((contact) => contact.id === id);
-    console.log(editContact);
     setEditableContact(editContact);
   };
 
